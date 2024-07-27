@@ -7,7 +7,7 @@
     "dev": "nodemon --exec babel-node ./src/index.ts --extensions \".ts,.js\"",
     "e2e": "cross-env DOTENV_CONFIG_PATH=.env.e2e nodemon --exec babel-node ./src/index.ts --extensions \".ts,.js\"",
     "build": "npm install && npx tsc",
-    "start": "node index.js"
+    "start": "node index.ts"
   },
   "author": "Niyati Patel",
   "license": "ISC",
