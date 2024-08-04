@@ -57,7 +57,15 @@ export const loginController = async (req: Request, res: Response) => {
 // COOKIE TOKEN VALIDATION ROUTE/ ENDPOINT
 export const verifyTokenController = async (req: Request, res: Response) => {
   try {
-    // SEND USER DETAIL TO THE FRONTEND AFTER VERIFYING AUTH TOKEN STORED IN COOKIE
+    const token = req.cookies.auth_token;
+    if (!token) {
+      return res.status(401).send({ message: "Unauthorized, no token" });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string);
+    req.userId = (decoded as any).userId;
+
+    // Send user details to the frontend after verifying auth token stored in the cookie
     res.status(200).send({ userId: req.userId });
   } catch (error) {
     console.log("verifyTokenController ~ error:", error);
