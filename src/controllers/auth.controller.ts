@@ -81,6 +81,8 @@ export const logoutController = async (req: Request, res: Response) => {
     res.cookie("auth_token", "", {
       expires: new Date(0), //token expires now immidiately
       sameSite: "none",
+      secure: true,
+      httpOnly: true,
     });
     res.status(200).send({
       message: "Logout Successful",
