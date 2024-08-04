@@ -42,6 +42,7 @@ export const loginController = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: true,
       maxAge: 86400000, //same as expiresIn but in milliseconds
+      sameSite: "none",
     });
 
     res.status(200).send({ userId: user._id, message: "Login Successful" });
