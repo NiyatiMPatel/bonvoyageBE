@@ -40,7 +40,7 @@ export const loginController = async (req: Request, res: Response) => {
     );
     res.cookie("auth_token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       maxAge: 86400000, //same as expiresIn but in milliseconds
     });
 
